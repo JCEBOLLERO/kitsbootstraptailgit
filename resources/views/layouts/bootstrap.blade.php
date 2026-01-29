@@ -22,7 +22,7 @@
         <ul class="navbar-nav me-auto">
           <li class="nav-item"><a class="nav-link" href="{{ route('notes.index') }}">Notes</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('students.index') }}">Students</a></li>
-          <li class="nav-item"><a class="nav-link" href="">Posts</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('proveedors.index') }}">Proveedores</a></li>
           <li class="nav-item"><a class="nav-link" href="">Users</a></li>
         </ul>
         <form method="POST" action="{{ route('logout') }}">

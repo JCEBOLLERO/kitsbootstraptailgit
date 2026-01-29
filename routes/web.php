@@ -3,6 +3,7 @@
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ProveedorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,6 +21,7 @@ Route::get('/dashboard', function () {
 
 Route::resource("notes", NoteController::class)->middleware('auth');
 Route::resource("students", StudentController::class)->middleware('auth');
+Route::resource("proveedors",ProveedorController::class)->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
