@@ -9,59 +9,56 @@
                 <!-- Page header -->
                 <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
                     <div>
-                        <h2 class="mb-2">Proveedores</h2>
-                        <p class="mb-0">Gestión de proveedores</p>
+                        <h2 class="mb-2">Facturas</h2>
+                        <p class="mb-0">Gestión de facturas</p>
                     </div>
-                    <a href="{{ route('proveedors.create') }}" class="btn btn-info">
-                        Crear nuevo proveedor
+                    <a href="{{ route('facturas.create') }}" class="btn btn-info">
+                        Crear nueva factura
                     </a>
                 </div>
-                <!-- tabla con los proveedores -->
+                <!-- tabla con las notas -->
                 <table class="table table-striped table-hover table-bordered border border-info-subtle">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">CIF</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Total</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($proveedors as $proveedor)
+                        @forelse ($facturas as $factura)
                             <tr>
-                                <td scope="row">{{ $proveedor->id }}</td>
-                                <td>{{ $proveedor->Nombre }}</td>
-                                <td>{{ $proveedor->CIF }}</td>
+                                <td scope="row">{{ $factura->id }}</td>
+                                <td>{{ $factura->cliente }}</td>
+                                <td>{{ $factura->fecha }}</td>
+                                <td>{{ $factura->total }}</td>
+                                
                                 <td class="d-flex">
-                                    <a href="{{ route('proveedors.show', $proveedor->id) }}" class="btn btn-primary me-2">Mostrar</a>
-                                    <a href="{{ route('proveedors.edit', $proveedor->id) }}" class="btn btn-warning me-2">Editar</a>
+                                    <a href="{{ route('facturas.show', $factura->id) }}" class="btn btn-primary me-2">Show</a>
+                                    <a href="{{ route('facturas.edit', $factura->id) }}" class="btn btn-warning me-2">Edit</a>
                                     <div x-ignore>
 
-                                        <form id="delete-form-{{ $proveedor->id }}"
-                                            action="{{ route('proveedors.destroy', $proveedor->id) }}" class="d-inline m-0"
+                                        <form action="{{ route('facturas.destroy', $factura->id) }}" class="d-inline  m-0"
                                             method="POST"
-                                            onsubmit="return confirm('¿ Estás seguro de que desea borrar este proveedor ?')">
+                                            onsubmit="return confirm('¿ Estás seguro de querer borrar la factura ?')">
                                             @csrf
                                             @method('DELETE')
-                                            <!-- <button type="submit" class="btn btn-danger">Delete</button> -->
+                                            <button type="submit" class="btn btn-danger">Borrar</button>
                                         </form>
-                                        <button class="btn btn-danger" onclick="confirmDelete({{ $proveedor->id }})">
-                                            <i class="bi bi-trash"></i>
-                                            Eliminar
-                                        </button>
-
                                     </div>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="text-center">¡ No existen proveedores !</td>
+                                <td colspan="5" class="text-center">¡ No se encuentran facturas !</td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
                 <div class="">
-                    {{ $proveedors->links() }}
+                    {{ $facturas->links() }}
                 </div>
             </div>
         </div>
