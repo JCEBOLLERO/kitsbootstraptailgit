@@ -6,8 +6,14 @@
   <title>MiPanel</title>
   <!-- @vite( ['resources/js/app.js']) -->
   @vite(['resources/js/app.js', 'resources/css/bootstrap.css'])
+  <!-- @vite(['resources/js/app.js']) -->
+
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="public/js/selclientes.js"></script> -->
+
+
 
 </head>
 <!-- LAYOUT BOOTSTRAP CARGADO -->
@@ -24,7 +30,9 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('notes.index') }}">Notes</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('students.index') }}">Students</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('proveedors.index') }}">Proveedores</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('facturas.index') }}">Facturas</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('familias.index') }}">Familias</a></li>
           <li class="nav-item"><a class="nav-link" href="">Users</a></li>
         </ul>
         <form method="POST" action="{{ route('logout') }}">
@@ -39,6 +47,8 @@
     @yield('content')
   </div>
   <x-swal />
+ <!-- <script src="{{ asset('../js/micodigo.js') }}"></script> -->
+
 
 </body>
 

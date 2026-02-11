@@ -18,7 +18,7 @@
 
             <h2>Factura #{{ $factura->id }}</h2>
 
-            <p>Cliente: {{ $factura->cliente }}</p>
+            <p>Cliente: {{$factura-> codcliente}}  -  {{ $factura->cliente }}</p>
             <p>Fecha: {{ $factura->fecha }}</p>
             <div class="card">
                 <div class="card-body p-4">

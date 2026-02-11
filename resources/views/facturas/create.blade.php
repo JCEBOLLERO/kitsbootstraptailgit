@@ -30,17 +30,101 @@
                 <div class="card-body p-4">
                     <form action="{{ route('facturas.store') }}" method="POST">
                         @csrf
+                        <div x-data="clientSelector({ clientes: @js($clientes) })" class="mb-4">
+
+    <!-- Código Cliente -->
+    <label for="codcliente" class="form-label">Código de Cliente</label>
+    <input type="text"
+           name="codcliente"
+           id="codcliente"
+           class="mb-2 form-control @error('codcliente') is-invalid @enderror"
+           x-model="clientCode"
+           @keyup.debounce="findClientByCode()">
+
+    @error('codcliente')
+        <span class="invalid-feedback">{{ $message }}</span>
+    @enderror
+
+    <!-- Nombre Cliente -->
+    <label for="cliente" class="form-label">Cliente</label>
+    <input type="text"
+           name="cliente"
+           id="cliente"
+           class="mb-2 form-control @error('cliente') is-invalid @enderror"
+           x-model="clientName">
+
+    @error('cliente')
+        <span class="invalid-feedback">{{ $message }}</span>
+    @enderror
+
+    <!-- Botón abrir modal -->
+    <div class="col-md-2 d-flex align-items-end">
+        <button type="button"
+                class="btn btn-secondary w-100"
+                data-bs-toggle="modal"
+                data-bs-target="#clientModal">
+            Buscar
+        </button>
+    </div>
+
+    <!-- 🔥 MODAL DENTRO DEL X-DATA 🔥 -->
+    <div class="modal fade" id="clientModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Seleccionar Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <input type="text"
+                           class="form-control mb-3"
+                           placeholder="Buscar cliente..."
+                           x-model="search"
+                           @input="filterClients()">
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>CIF</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <template x-for="cliente in filteredClients" :key="cliente.id">
+                                <tr>
+                                    <td x-text="cliente.id"></td>
+                                    <td x-text="cliente.nombre"></td>
+                                    <td x-text="cliente.cif"></td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-sm"
+                                                @click="selectClient(cliente)"
+                                                data-bs-dismiss="modal">
+                                            Seleccionar
+                                        </button>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div> <!-- ← ESTE ES EL CIERRE CORRECTO DEL X-DATA -->
+
                         <div class="mb-4">
-                            <label for="cliente" class="form-label">Cliente</label>
-                            <input type="text" name="cliente" id="cliente" class="mb-2 form-control @error('cliente') is-invalid @enderror"
-                            value = "{{ old('cliente') }}"
-                            placeholder="Introduce el nombre del cliente" autofocus>
-                            @error('Nombre')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
 
                             <label for="fecha" class="form-label">Fecha</label>
-                            <input type="text" name="fecha" id="fecha" class="mb-2 form-control @error('fecha') is-invalid @enderror"
+                            <input type="date" name="fecha" id="fecha" class="mb-2 form-control @error('fecha') is-invalid @enderror"
                              placeholder="Teclea fecha de la factura"
                              value="{{ old('fecha') }}" >
                             @error('CIF')
@@ -63,7 +147,7 @@
                                         <td><input type="text" name="detalles[0][producto]" id="" class="form-control" value="{{ old('detalles[0][producto]') }}"></td>
                                         <td><input type="number" name="detalles[0][cantidad]" id="" class="form-control"></td>
                                         <td><input type="number" name="detalles[0][precio]" id="" class="form-control"></td>
-                                        <td><button type="button" class="btn btn-danger btn-sm eliminar-fila">X</button></td>
+                                        <td><button class="btn btn-danger btn-sm eliminar-fila">X</button></td>
                                     </tr>
                                 </tbody>
                             </table>

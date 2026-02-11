@@ -5,6 +5,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\FamiliaController;
+use App\Http\Controllers\ClienteController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,6 +27,8 @@ Route::resource("notes", NoteController::class)->middleware('auth');
 Route::resource("students", StudentController::class)->middleware('auth');
 Route::resource("proveedors",ProveedorController::class)->middleware('auth');
 Route::resource("facturas",FacturaController::class)->middleware('auth');
+Route::resource("clientes",ClienteController::class)->middleware('auth');
+Route::resource("familias",FamiliaController::class)->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

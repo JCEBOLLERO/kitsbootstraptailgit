@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('facturas', function (Blueprint $table) {
+        Schema::create('familias', function (Blueprint $table) {
             $table->id();
-
-            $table->foreignId('codcliente') ->constrained('clientes') ->cascadeOnUpdate() ->restrictOnDelete();
-            
-            $table->string('cliente');
-            $table->decimal('total',10,2)->default(0);
-            $table->date('fecha');
+            $table->string('descripcion',50)->unique();
+            $table->string('nemotecnico',3)->unique();
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('facturas');
+        Schema::dropIfExists('familias');
     }
 };

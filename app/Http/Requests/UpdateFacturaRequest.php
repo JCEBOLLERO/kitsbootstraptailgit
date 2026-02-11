@@ -22,6 +22,7 @@ class UpdateFacturaRequest extends FormRequest
      */
     public function rules() {
         return [ 
+            'codcliente' => 'required|integer|exists:clientes,id',
             'cliente' => 'required|string|max:255', 
             'fecha' => 'required|date', 
             'detalles' => 'required|array|min:1', 
@@ -32,6 +33,7 @@ class UpdateFacturaRequest extends FormRequest
     }
     public function messages() {
         return [ 
+            'cliente.required' => 'El código de cliente es obligatorio',
             'cliente.required' => 'El cliente es obligatorio.', 
             'fecha.required' => 'La fecha es obligatoria.', 
             'detalles.required' => 'Debe agregar al menos un detalle.', 

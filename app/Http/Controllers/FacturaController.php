@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Factura;
+use App\Models\Cliente;
 use App\Http\Requests\StoreFacturaRequest;
 use App\Http\Requests\UpdateNoteRequest;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,8 @@ class FacturaController extends Controller
      */
     public function create()
     {
-        return view('facturas.create');
+        $clientes = Cliente::orderBy("nombre")->get();
+        return view('facturas.create', compact('clientes'));
     }
 
     /**
@@ -37,10 +39,12 @@ class FacturaController extends Controller
      */
     public function store(StoreFacturaRequest $request)
     {
+        // dd($request->all());
         $validated= $request->validated();
         DB::transaction(function () use ($validated) {
             // Crear factura (maestro) 
             $factura = Factura::create([
+                'codcliente' => $validated['codcliente'],
                 'cliente' => $validated['cliente'],
                 'fecha' => $validated['fecha'], 
                 'total' => 0,

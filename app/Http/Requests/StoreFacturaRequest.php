@@ -22,6 +22,7 @@ class StoreFacturaRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'codcliente' => 'required|integer|exists:clientes,id',
             'cliente' => 'required|string|max:255',
             'fecha' => 'required|date',
             'detalles' => 'required|array|min:1',
@@ -34,6 +35,7 @@ class StoreFacturaRequest extends FormRequest
     public function messages() 
     {
         return [
+            'codcliente.required' => 'El cliente es obligatorio',
             'cliente.required' => 'El cliente es obligatorio.',
             'fecha.required' => 'La fecha es obligatoria.', 
             'detalles.required' => 'Debe agregar al menos un detalle.', 

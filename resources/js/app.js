@@ -8,9 +8,10 @@ window.Swal = Swal;
 import './delete-confirm';
 
 import Alpine from 'alpinejs';
+import clientSelector from './selclientes.js';
 
 window.Alpine = Alpine;
-
+Alpine.data('clientSelector', clientSelector);
 Alpine.start();
 
 
