@@ -31,56 +31,56 @@
                     <form action="{{ route('clientes.store') }}" method="POST">
                         @csrf
                         <div class="mb-4">
-                            <label for="nombre" class="form-label">Nombre</label>
+                            <label for="nombre" class="form-label fw-semibold">Nombre</label>
                             <input type="text" name="nombre" id="nombre" class="mb-2 form-control @error('nombre') is-invalid @enderror"
                             value = "{{ old('nombre') }}"
                             placeholder="Introduce el nombre del cliente" autofocus>
                             @error('nombre')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
-                            <label for="cif" class="form-label">CIF</label>
+                            <label for="cif" class="form-label fw-semibold">CIF</label>
                             <input type="text" name="cif" id="cif" class="mb-2 form-control @error('cif') is-invalid @enderror"
                              placeholder="Teclea el CIF del cliente"
                              value="{{ old('cif') }}" >
                             @error('cif')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
-                            <label for="direccion" class="form-label">Dirección</label>
+                            <label for="direccion" class="form-label fw-semibold">Dirección</label>
                             <input type="text" name="direccion" id="direccion" class="mb-2 form-control @error('direccion') is-invalid @enderror"
                              placeholder="Teclea dirección del cliente"
                              value="{{ old('direccion') }}" >
                             @error('direccion')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
-                            <label for="poblacion" class="form-label">Población</label>
+                            <label for="poblacion" class="form-label fw-semibold">Población</label>
                             <input type="text" name="poblacion" id="poblacion" class="mb-2 form-control @error('poblacion') is-invalid @enderror"
                              placeholder="Teclea población del cliente"
                              value="{{ old('poblacion') }}" >
                             @error('poblacion')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
-                            <label for="provincia" class="form-label">Provincia</label>
+                            <label for="provincia" class="form-label fw-semibold">Provincia</label>
                             <input type="text" name="provincia" id="provincia" class="mb-2 form-control @error('provincia') is-invalid @enderror"
                              placeholder="Teclea la provincia del cliente"
                              value="{{ old('provincia') }}" >
                             @error('provincia')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
-                            <label for="codpostal" class="form-label">Código Postal</label>
+                            <label for="codpostal" class="form-label fw-semibold">Código Postal</label>
                             <input type="text" name="codpostal" id="codpostal" class="mb-2 form-control @error('codpostal') is-invalid @enderror"
                              placeholder="Teclea el código postal del cliente"
                              value="{{ old('codpostal') }}" >
                             @error('codpostal')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
-                            <label for="telefono1" class="form-label">Teléfono 1</label>
+                            <label for="telefono1" class="form-label fw-semibold">Teléfono 1</label>
                             <input type="text" name="telefono1" id="telefono1" class="mb-2 form-control @error('telefono1') is-invalid @enderror"
                              placeholder="Teclea el teléfono 1 del cliente"
                              value="{{ old('telefono1') }}" >
                             @error('telefono1')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
-                            <label for="telefono2" class="form-label">Teléfono 2</label>
+                            <label for="telefono2" class="form-label fw-semibold">Teléfono 2</label>
                             <input type="text" name="telefono2" id="telefono2" class="mb-2 form-control @error('telefono2') is-invalid @enderror"
                              placeholder="Teclea el teléfono 2 del cliente"
                              value="{{ old('telefono2') }}" >
@@ -95,7 +95,7 @@
                             @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                            <label for="observaciones" class="form-label">Observaciones</label>
+                            <label for="observaciones" class="form-label fw-semibold">Observaciones</label>
                             <textarea class="form-control" rows="5" id="observaciones" name="observa"></textarea>
                             
                             @error('observa')

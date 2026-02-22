@@ -40,23 +40,29 @@
                             <label class="small text-uppercase">Código Postal</label>
                             <h3>{{ $cliente->codpostal }}</h3>
                         </div>
-                        <div class="mb-4">
-                            <label class="small">email</label>
-                            <p>{{ $cliente->email }}</p>
+                        <div class="border-bottom mb-4 pb-3">
+                            <label class="small text-uppercase">email</label>
+                            <h3>{{ $cliente->email }}</h3>
                         </div>
-                        <div class="mb-4">
-                            <label class="small">Teléfono 1</label>
-                            <p>{{ $cliente->telefono1 }}</p>
+                        <div class="row g-3">
+
+                            <div class="col-md-6 border-bottom mb-4 pb-3">
+                                <label class="small text-uppercase">Teléfono 1</label>
+                                <h3>{{ $cliente->telefono1 }}</h3>
+                            </div>
+                            <div class="col-md-6 border-bottom mb-4 pb-3">
+                                <label class="small text-uppercase">Teléfono 2</label>
+                                <h3>{{ $cliente->telefono2 }}</h3>
+                            </div>
                         </div>
-                        <div class="mb-4">
-                            <label class="small">Teléfono 2</label>
-                            <p>{{ $cliente->telefono2 }}</p>
+                        <div class="border-bottom mb-4 pb-3">
+                            <label class="small text-uppercase">Observaciones</label>
+                            <h3>
+
+                                <textarea class="form-control" >{{ $cliente->observaciones }}</textarea>
+                            </h3>
                         </div>
-                        <div class="mb-4">
-                            <label class="small">Observaciones</label>
-                            <textarea>{{ $cliente->observaciones }}</textarea>
-                        </div>
-                        <div class="row g-3 border-top">
+                        <div class="row g-3">
                             <div class="col-md-6">
                                 <small class="d-block">Created</small>
                                 <small class="text-primary">{{ $cliente->created_at->diffForHumans()}}</small>
